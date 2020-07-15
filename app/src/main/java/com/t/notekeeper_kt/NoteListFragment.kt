@@ -1,39 +1,36 @@
 package com.t.notekeeper_kt
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
+import androidx.navigation.findNavController
+import com.t.notekeeper_kt.databinding.FragmentNoteListBinding
 
 
 /**
  * A simple [Fragment] subclass.
- * Use the [NoteListFragment.newInstance] factory method to
- * create an instance of this fragment.
  */
 class NoteListFragment : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_note_list, container, false)
-
-        view.findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
-            Snackbar.make(it, "Replace", Snackbar.LENGTH_SHORT)
-                .setAction("Action", null).show()
+        val binding = DataBindingUtil.inflate<FragmentNoteListBinding>(
+            inflater,
+            R.layout.fragment_note_list,
+            container,
+            false
+        )
+        binding.fab.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_noteListFragment_to_FirstFragment)
+            Log.i("NoteList Fragment", "fab button click")
+            println("button clicked")
         }
-        return view
+        return binding.root
     }
-
-
 }
