@@ -10,4 +10,13 @@
         android:name="com.t.notekeeper_kt.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first" />
+    <fragment
+        android:id="@+id/noteListFragment"
+        android:name="com.t.notekeeper_kt.NoteListFragment"
+        android:label="fragment_note_list"
+        tools:layout="@layout/fragment_note_list">
+        <action
+            android:id="@+id/action_noteListFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
 </navigation>
