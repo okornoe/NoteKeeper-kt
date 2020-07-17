@@ -23,12 +23,12 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val dm = DataManager()
+        //val dm = DataManager()
 
         val adapterCourses = activity?.let {
             ArrayAdapter<CourseInfo>(
                 it,
-                android.R.layout.simple_spinner_dropdown_item, dm.courses.values.toList()
+                android.R.layout.simple_spinner_dropdown_item, DataManager.courses.values.toList()
             )
         }
 
