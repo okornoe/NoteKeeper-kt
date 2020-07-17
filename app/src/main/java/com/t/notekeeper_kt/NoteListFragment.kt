@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.t.notekeeper_kt.databinding.FragmentNoteListBinding
+import kotlinx.android.synthetic.main.fragment_note_list.*
 
 
 /**
@@ -32,14 +33,14 @@ class NoteListFragment : Fragment() {
             Log.i("NoteList Fragment", "fab button click")
             println("button clicked")
         }
-        binding.listNotes.adapter =
-            activity?.let {
-                ArrayAdapter(
-                    it,
-                    android.R.layout.simple_list_item_1,
-                    DataManager.notes
-                )
-            }
+        listNotes.adapter = activity?.let {
+            ArrayAdapter(
+                it,
+                android.R.layout.simple_list_item_1,
+                DataManager.notes
+            )
+        }
+
         return binding.root
     }
 }
