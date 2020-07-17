@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -31,6 +32,14 @@ class NoteListFragment : Fragment() {
             Log.i("NoteList Fragment", "fab button click")
             println("button clicked")
         }
+        binding.listNotes.adapter =
+            activity?.let {
+                ArrayAdapter(
+                    it,
+                    android.R.layout.simple_list_item_1,
+                    DataManager.notes
+                )
+            }
         return binding.root
     }
 }
